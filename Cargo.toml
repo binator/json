@@ -1,0 +1,55 @@
+[package]
+name = "binator_json"
+authors = ["Stargateur"]
+version = "0.0.0"
+description = "binator json"
+license = "Zlib"
+repository = "https://github.com/binator/json"
+readme = "readme.md"
+keywords = ["parsing", "combinator", "json"]
+categories = ["parsing"]
+edition = "2021"
+
+include = [
+  "readme.md",
+  "license.md",
+  "Cargo.toml",
+  "rustfmt.toml",
+  "src/**/*.rs",
+]
+
+[profile.bench]
+debug = true
+lto = true
+codegen-units = 1
+
+[dependencies]
+binator_core = "0.0.2"
+binator_utils = "0.0.0"
+binator_base = "0.0.0"
+binator_context = "0.0.0"
+binator_number = "0.0.0"
+
+serde = { version = "1.0", optional = true, features = ["derive"] }
+const_format = { version = "0.2", features = ["const_generics"] }
+paste = "1"
+
+[dependencies.tracing]
+version = "0.1"
+optional = true
+
+[dev-dependencies]
+pretty_assertions = "1"
+derive-new = "0.5"
+derive_more = "0.99"
+
+binator_core = { version = "0.0.2", features = ["tracing"]}
+binator_utils = { version = "0.0.0", features = ["tracing"]}
+binator_base = { version = "0.0.0", features = ["tracing"]}
+binator_context = { version = "0.0.0", features = ["tracing"]}
+binator_number = { version = "0.0.0", features = ["tracing"]}
+
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", default-features = false, features = ["std", "registry", "local-time", "env-filter", "fmt", "time"]}
+env_logger = { version = "0.9", default-features = false }
+test-log = { version = "0.2.10", features = ["trace"] }
