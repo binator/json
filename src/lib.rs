@@ -11,29 +11,27 @@ use std::{
   fmt::Debug,
 };
 
-use binator_base::{
-  is,
-  one_of,
-  tag,
-  utf8,
-  BaseAtom,
-};
-use binator_core::{
-  Acc,
+use binator::{
+  base::{
+    float,
+    is,
+    one_of,
+    tag,
+    utf8,
+    BaseAtom,
+    FloatParse,
+    IntRadixAtom,
+  },
+  utils::{
+    Acc,
+    Utils,
+    UtilsAtom,
+  },
   Contexting,
   CoreAtom,
   Parse,
   Parsed,
   Streaming,
-};
-use binator_number::{
-  float,
-  FloatParse,
-  IntRadixAtom,
-};
-use binator_utils::{
-  Utils,
-  UtilsAtom,
 };
 
 /// Generic Json Value
@@ -312,7 +310,7 @@ where
 mod tests {
   extern crate test;
 
-  use binator_context::Ignore;
+  use binator::context::Ignore;
   use test::{
     black_box,
     Bencher,
